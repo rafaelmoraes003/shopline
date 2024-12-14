@@ -23,4 +23,10 @@ public class UserResource {
         List<User> users = this.userService.findAll();
         return ResponseEntity.status(HttpURLConnection.HTTP_OK).body(users);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<User> findById(@PathVariable Long id) {
+        User user = userService.findById(id);
+        return ResponseEntity.status(HttpURLConnection.HTTP_OK).body(user);
+    }
 }
