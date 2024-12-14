@@ -23,5 +23,10 @@ public class OrderResource {
         List<Order> orders = this.orderService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(orders);
     }
-    
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Order> findById(@PathVariable Long id) {
+        Order order = this.orderService.findById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(order);
+    }
 }
