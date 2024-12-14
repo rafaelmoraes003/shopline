@@ -14,11 +14,11 @@ public class UserService {
     private UserRepository userRepository;
 
     public List<User> findAll() {
-        return userRepository.findAll();
+        return this.userRepository.findAll();
     }
 
     public User findById(Long id) {
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> user = this.userRepository.findById(id);
         return user.get();
     }
 }
