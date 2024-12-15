@@ -23,5 +23,11 @@ public class CategoryResource {
         List<Category> categories = this.categoryService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(categories);
     }
-    
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Category> findById(@PathVariable Long id) {
+        Category category = this.categoryService.findById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(category);
+    }
+
 }
