@@ -1,5 +1,6 @@
 package com.educandoweb.shopline.entities;
 
+import com.educandoweb.shopline.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
@@ -20,12 +21,15 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id")
     private User client;
 
+    private Integer orderStatus;
+
     public Order() {
     }
 
-    public Order(Long id, Instant moment, User client) {
+    public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
         this.id = id;
         this.moment = moment;
+        this.setOrderStatus(orderStatus);
         this.client = client;
     }
 
@@ -45,6 +49,17 @@ public class Order implements Serializable {
         this.moment = moment;
     }
 
+    public OrderStatus getOrderStatus() {
+        return OrderStatus.valueOf(this.orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        if (orderStatus != null) {
+            this.orderStatus = orderStatus.getCode();
+        }
+    }
+
+
     public User getClient() {
         return this.client;
     }
@@ -63,5 +78,15 @@ public class Order implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hashCode(this.id);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + this.id +
+                ", moment=" + this.moment +
+                ", client=" + this.client +
+                ", orderStatus=" + this.orderStatus +
+                '}';
     }
 }
