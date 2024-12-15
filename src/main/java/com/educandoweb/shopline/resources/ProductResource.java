@@ -23,5 +23,10 @@ public class ProductResource {
         List<Product> products = this.productService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
-    
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Product> findById(@PathVariable Long id) {
+        Product product = this.productService.findById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(product);
+    }
 }
