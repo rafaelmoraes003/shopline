@@ -67,7 +67,6 @@ public class Order implements Serializable {
         }
     }
 
-
     public User getClient() {
         return this.client;
     }
@@ -86,6 +85,13 @@ public class Order implements Serializable {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Double getTotal() {
+        return this.items
+                .stream()
+                .map(OrderItem::getSubTotal)
+                .reduce(0.0, Double::sum);
     }
 
     @Override
