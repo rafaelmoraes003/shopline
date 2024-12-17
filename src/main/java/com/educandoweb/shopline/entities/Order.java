@@ -2,7 +2,6 @@ package com.educandoweb.shopline.entities;
 
 import com.educandoweb.shopline.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -25,7 +24,7 @@ public class Order implements Serializable {
     private User client;
 
     private Integer orderStatus;
-    
+
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItem> items = new HashSet<>();
 
