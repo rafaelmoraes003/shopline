@@ -2,11 +2,14 @@ package com.educandoweb.shopline.entities;
 
 import com.educandoweb.shopline.entities.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity(name = "orders")
 public class Order implements Serializable {
@@ -22,6 +25,9 @@ public class Order implements Serializable {
     private User client;
 
     private Integer orderStatus;
+    
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items = new HashSet<>();
 
     public Order() {
     }
@@ -66,6 +72,10 @@ public class Order implements Serializable {
 
     public void setClient(User client) {
         this.client = client;
+    }
+
+    public Set<OrderItem> getItems() {
+        return this.items;
     }
 
     @Override
