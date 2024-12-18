@@ -2,7 +2,7 @@
 
 ###
 
-<p align="left">In this project, an online e-commerce platform was developed with a PostgreSQL database.<br><br>For the development of the API, Spring Boot was used as the backend framework, with Hibernate as the ORM to connect the database.<br><br>The project follows the MVC (Model-View-Controller) architecture and adhering to REST and SOLID principles with Java.</p>
+<p align="left">Shopline is a back-end application designed to provide a RESTful API for managing users, orders, products, and services in an e-commerce platform.<br><br>This project was built using Java, Spring Boot, Hibernate, and PostgreSQL, following the Model-View-Controller (MVC) design pattern and adhering to SOLID principles.</p>
 
 ###
 
