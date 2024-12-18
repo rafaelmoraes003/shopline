@@ -32,4 +32,10 @@ public class UserResource {
         User newUser = this.userService.insert(userBody);
         return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        this.userService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
