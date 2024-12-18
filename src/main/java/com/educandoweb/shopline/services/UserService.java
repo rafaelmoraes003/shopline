@@ -4,9 +4,9 @@ import com.educandoweb.shopline.entities.User;
 import com.educandoweb.shopline.repositories.UserRepository;
 import com.educandoweb.shopline.services.exceptions.DatabaseException;
 import com.educandoweb.shopline.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,12 +44,16 @@ public class UserService {
     }
 
     public User update(Long id, User userData) {
-        User user = this.userRepository.getReferenceById(id);
+        try {
+            User user = this.userRepository.getReferenceById(id);
 
-        user.setName(userData.getName());
-        user.setEmail(userData.getEmail());
-        user.setPhone(userData.getPhone());
+            user.setName(userData.getName());
+            user.setEmail(userData.getEmail());
+            user.setPhone(userData.getPhone());
 
-        return this.userRepository.save(user);
+            return this.userRepository.save(user);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 }
