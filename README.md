@@ -2,7 +2,7 @@
 
 ###
 
-<p align="left">In this project, an online e-commerce platform was developed with a PostgreSQL database.<br><br>For the development of the API, Spring Boot was used as the backend framework, with Hibernate as the ORM to connect the database.<br><br>The project follows the MVC (Model-View-Controller) architecture, leveraging Object Orientation principles and adhering to SOLID principles with Java.</p>
+<p align="left">In this project, an online e-commerce platform was developed with a PostgreSQL database.<br><br>For the development of the API, Spring Boot was used as the backend framework, with Hibernate as the ORM to connect the database.<br><br>The project follows the MVC (Model-View-Controller) architecturec and adhering to REST and SOLID principles with Java.</p>
 
 ###
 
